@@ -18,7 +18,7 @@
 
 # ------------------------------------------
 # PART 2: THE INTELLIGENT AGENT LOGIC (IF-THEN RULES)
-#  هنا كل واحد ينسخ الـ Logic بتاعه (At least 5 rules total)
+#  هنا كل واحد ينسخ الـ Logic بتاعه
 # ------------------------------------------
 
 # --- MEMBER 1 BLOCK: Smart Lighting Logic ---

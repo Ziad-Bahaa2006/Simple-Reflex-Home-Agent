@@ -7,6 +7,9 @@
 # ------------------------------------------
 # PART 1: PERCEPTS (INPUTS)
 #  كل واحد يحدد الانبوتس اللي محتاجها هنا
+motion=input("Is there a motion? (yes/no)")
+time_of_day=input("Is it day or night? (day/night)")
+light_level=input("What is light level (low/high)")
 # ------------------------------------------
 
 # [Input 1] Temperature (Example: float)
@@ -19,6 +22,30 @@
 # ------------------------------------------
 # PART 2: THE INTELLIGENT AGENT LOGIC (IF-THEN RULES)
 #  هنا كل واحد ينسخ الـ Logic بتاعه
+def lighting_agent(motion,time_of_day,light_level):
+        # Rule 1: Night + Motion → ON
+    if motion == "yes" and time_of_day == "night" and light_level == "low":
+        return "Light ON (High Brightness)"
+    
+    # Rule 2: Night + Motion (normal)
+    elif motion == "yes" and time_of_day == "night":
+        return "Light ON"
+    
+    # Rule 3: Night + No Motion → OFF
+    elif motion == "no" and time_of_day == "night":
+        return "Light OFF"
+    
+    # Rule 4: Day + Motion → OFF (save energy)
+    elif motion == "yes" and time_of_day == "day":
+        return "Light OFF"
+    
+    # Rule 5: Day + No Motion → OFF
+    elif motion == "no" and time_of_day == "day":
+        return "Light OFF"
+    
+    # Default
+    else:
+        return "No Action"
 # ------------------------------------------
 
 # --- MEMBER 1 BLOCK: Smart Lighting Logic ---
@@ -40,7 +67,7 @@
 # هنا بيتم طباعة القرارات النهائية بشكل واضح ومنظم
 # ------------------------------------------
 
-# [Output 1] Lighting System Status
+print("\n",lighting_agent(motion,time_of_day,light_level))
 # [Output 2] Climate System Status
 # [Output 3] Security System Status
 

@@ -1,26 +1,26 @@
 
-# Alexandria National University - Faculty of Computers and Data Science
+#  Alexandria National University - Faculty of Computers and Data Science
 #  Smart Systems - Assignment 1: Simple-Reflex-Home-Agent 
 #  Team Members: [Ziad Bahaa Elsayed-2405720], [Mohamed Ahmed Elmesarea-2405727], [Mohamed Islam Ibrahim-2405736]
 # ==========================================
 
 # ------------------------------------------
 # PART 1: PERCEPTS (INPUTS)
-#  كل واحد يحدد الانبوتس اللي محتاجها هنا
-# [Input 1] Temperature (Example: float)
-# [Input 2] Light Status (Example: yes/no)
-# [Input 3] Motion Sensor (Example: yes/no)
-# [Input 4] Smoke/Gas Sensor (Example: yes/no)
-# [Input 5] Door Status (Example: open/closed)
 # ------------------------------------------
+print("--- 🏠 Smart Home Sensor Initialization ---")
 
+# Lighting Percepts
 motion=input("Is there a motion? (yes/no)")
 time_of_day=input("Is it day or night? (day/night)")
 light_level=input("What is light level (low/high)")
 
-# -----------------------------------------------------------------
+# Climate Percepts
+
+temperature = float(input("Enter temperature (°C): "))
+
+
 # SECURITY & EMERGENCY PERCEPTS
-# -----------------------------------------------------------------
+
 print("-" * 40)
 print("--- 🛡️ Security System Initialization ---")
 
@@ -34,10 +34,9 @@ door_status = input("[Sensor] Is the door open? (yes/no): ").lower()
 motion_detected = input("[Sensor] Is there motion detected? (yes/no): ").lower()
 
 print("-" * 40)
-temperature = float(input("Enter temperature (°C): "))
-# ------------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------
 # PART 2: THE INTELLIGENT AGENT LOGIC (IF-THEN RULES)
-#  هنا كل واحد يحط الـ Logic بتاعه
+# ----------------------------------------------------
 
 # --- Smart Lighting Logic ---
 
@@ -65,14 +64,8 @@ def lighting_agent(motion,time_of_day,light_level):
     # Default
     else:
         return "No Action"
-# ------------------------------------------
-
-
-
-# --- MEMBER 2 BLOCK: Climate & Air Quality Logic ---
-# Rule 3: ...
-# Rule 4: ...
-
+    
+# --- climate_agent ---
 def climate_agent(temperature, smoke_level):
 
     # --- Smoke Logic ---
@@ -103,11 +96,7 @@ def climate_agent(temperature, smoke_level):
     return f"{temp_status} | {smoke_status}"
 
 
-
-
-
-# ------------------------------------------
-# -- Advanced Security & Emergency (Ziad's Module) ---
+# -- Security & Emergency (Ziad's Module) ---
 
 # 1. Emergency Protocol (Highest Priority)
 if emergency_button == "yes" or smoke_level > 0.5:
@@ -133,28 +122,26 @@ elif system_armed == "no":
 else:
     security_action = "⚠️ System Status Unknown. Please check sensors."
 
-# -------------------------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
 # PART 3: ACTIONS (OUTPUTS)
-# هنا بيتم طباعة القرارات النهائية بشكل واضح ومنظم
+# -----------------------------------------------------------------------------------------------
 
+print("\n" + "=" * 40)
+print("🤖 AGENT FINAL DECISIONS:")
+print("=" * 40)
+
+# 1. Lighting Output
 print("\n",lighting_agent(motion,time_of_day,light_level))
-# [Output 2] Climate System Status
-# -----------------------------------------------------------------
 
-# This section displays the final decision of the Security Agent
-print("-" * 40)
-print(f"[{'!] SYSTEM STATUS' if '🚨' in security_action else 'i] SYSTEM STATUS'}")
-print(f"Final Security Decision: {security_action}")
-print("-" * 40)
-# ------------------------------------------
-print("\n--- End of Agent Decisions ---")
-#-------------------------------------------
-#-------------------------------------------
-# ------------------------------------------
-# --- MEMBER 2 OUTPUT: Climate System ---
+# 2. Climate Output
 print("-" * 40)
 print("--- 🌡️ Climate System Status ---")
 print(climate_agent(temperature, smoke_level))
 print("-" * 40)
-# ------------------------------------------
 
+# 3. Security Output
+print(f"[{'!] SYSTEM ALERT' if '🚨' in security_action else 'i] SYSTEM STATUS'}")
+print(f"Final Security Decision: {security_action}")
+print("-" * 40)
+
+print("--- End of Smart Home Agent Execution ---")

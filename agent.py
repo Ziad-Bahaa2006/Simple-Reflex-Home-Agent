@@ -34,7 +34,7 @@ door_status = input("[Sensor] Is the door open? (yes/no): ").lower()
 motion_detected = input("[Sensor] Is there motion detected? (yes/no): ").lower()
 
 print("-" * 40)
-
+temperature = float(input("Enter temperature (°C): "))
 # ------------------------------------------------------------------------------------------------------------------------------
 # PART 2: THE INTELLIGENT AGENT LOGIC (IF-THEN RULES)
 #  هنا كل واحد يحط الـ Logic بتاعه
@@ -72,6 +72,37 @@ def lighting_agent(motion,time_of_day,light_level):
 # --- MEMBER 2 BLOCK: Climate & Air Quality Logic ---
 # Rule 3: ...
 # Rule 4: ...
+
+def climate_agent(temperature, smoke_level):
+
+    # --- Smoke Logic ---
+    if smoke_level >= 0.7:
+        smoke_status = " Ventilation ON (MAX)"
+    elif smoke_level >= 0.4:
+        smoke_status = " Ventilation ON (Normal)"
+    elif smoke_level >= 0.2:
+        smoke_status = " Air Monitoring (Low Ventilation)"
+    else:
+        smoke_status = " Ventilation OFF"
+
+
+    # --- Temperature Logic ---
+    if temperature >= 30:
+        temp_status = "❄️ AC ON (High Cooling)"
+    elif temperature >= 25:
+        temp_status = "❄️ AC ON (Normal Cooling)"
+    elif temperature >= 20:
+        temp_status = "✅ Climate Stable (No Action)"
+    elif temperature >= 15:
+        temp_status = "🔥 Heater ON (Normal)"
+    else:
+        temp_status = "🔥 Heater ON (High)"
+
+
+    # --- Final Output ---
+    return f"{temp_status} | {smoke_status}"
+
+
 
 
 
@@ -117,3 +148,13 @@ print(f"Final Security Decision: {security_action}")
 print("-" * 40)
 # ------------------------------------------
 print("\n--- End of Agent Decisions ---")
+#-------------------------------------------
+#-------------------------------------------
+# ------------------------------------------
+# --- MEMBER 2 OUTPUT: Climate System ---
+print("-" * 40)
+print("--- 🌡️ Climate System Status ---")
+print(climate_agent(temperature, smoke_level))
+print("-" * 40)
+# ------------------------------------------
+

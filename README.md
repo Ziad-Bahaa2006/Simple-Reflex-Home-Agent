@@ -125,9 +125,8 @@ Final Security Decision: 🚨 EMERGENCY: Calling Fire Dept/Ambulance & Unlocking
 
 ## 📸 Demo
 
-![Terminal Demo](assets/screenshot.png)
+![Terminal Demo](screenshot.png)
 
-> 📌 **Note:** This is a fully interactive CLI application. Replace `placeholder-image-link.png` with a direct URL to your terminal screenshot (upload it to the repository under `/assets` and reference it here).
 
 ---
 

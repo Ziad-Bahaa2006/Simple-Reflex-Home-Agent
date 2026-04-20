@@ -96,7 +96,7 @@ def climate_agent(temperature, smoke_level):
     return f"{temp_status} | {smoke_status}"
 
 
-# -- Security & Emergency (Ziad's Module) ---
+# -- Security & Emergency  ---
 
 # 1. Emergency Protocol (Highest Priority)
 if emergency_button == "yes" or smoke_level > 0.5:
